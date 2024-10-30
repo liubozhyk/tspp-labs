@@ -79,23 +79,29 @@ public class HelloController implements Initializable {
         drawRectangleAnchorPane.getChildren().setAll(rect);
     }
 
-    @FXML public void startAnimation() {
+    @FXML public void animation() {
         timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
             rect.setStroke(randomColor());
         }));
 
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
+        startTimer.setOnMouseClicked(mouseEvent -> {
+            if (timeline.getStatus() != Animation.Status.RUNNING) {
+                timeline.setCycleCount(Timeline.INDEFINITE);
+                timeline.play();
+            }
+        });
 
-    @FXML public void pauseAnimation() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Підтвердити зупинення анімації?");
-        alert.showAndWait();
+        stopTimer.setOnMouseClicked(mouseEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Підтвердити зупинення анімації?");
+            alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.OK) {
-            timeline.pause();
-        }
+            if (alert.getResult() == ButtonType.OK) {
+                if (timeline.getStatus() == Animation.Status.RUNNING) {
+                    timeline.stop();
+                }
+            }
+        });
     }
 
     private Color randomColor() {
