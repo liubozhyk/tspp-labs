@@ -105,15 +105,6 @@ public class AppController implements Initializable {
             }
             resultTextArea.appendText("\nTotal price: " + totalPrice + "$");
         } else {
-            /*for (Client client : regularClientComboBox.getItems()) {
-                if (regularClientComboBox.getItems().getLast().getName().equals(newClientTextField.getText())) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Помилка");
-                    alert.setContentText("Ім'я вже є у списку!");
-                    alert.show();
-                }
-            }
-             */
             regularClientComboBox.getItems().add(new Client(newClientTextField.getText()));
             resultTextArea.setText("Client:\t" + regularClientComboBox.getItems().getLast().getName() +
                     "\nClient ID:\t" + "ID_" + regularClientComboBox.getItems().getLast().getId() + "\n");
@@ -138,7 +129,6 @@ public class AppController implements Initializable {
                 try (FileWriter fileWriter = new FileWriter("Saved File of " + selectedClient + ".txt")) {
                     fileWriter.write(resultTextArea.getText());
                 } catch (IOException e) {
-                    // Handle IOException gracefully, e.g., show error dialog
                     Alert alertError = new Alert(Alert.AlertType.ERROR);
                     alertError.setHeaderText("Помилка збереження");
                     alertError.setContentText("Помилка під час збереження файлу: " + e.getMessage());
@@ -164,7 +154,6 @@ public class AppController implements Initializable {
                     Desktop.getDesktop().open(helpFile);
                 } catch (IOException e) {
                     e.printStackTrace();
-                    // Handle error, e.g., show error dialog
                 } catch (URISyntaxException e) {
                     throw new RuntimeException(e);
                 }
