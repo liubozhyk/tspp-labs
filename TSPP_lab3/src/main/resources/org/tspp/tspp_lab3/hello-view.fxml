@@ -13,25 +13,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tspp.tspp_lab3.AppFirstWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tspp.tspp_lab3.AppFirstWindowController">
    <children>
       <MenuBar onMouseClicked="#importFile" prefHeight="20.0" prefWidth="600.0">
         <menus>
-          <Menu fx:id="goodsAdminInfoMenu" mnemonicParsing="false" text="Інформація про товари">
+          <Menu fx:id="goodsEditFileMenu" mnemonicParsing="false" text="Інформація про товари">
             <items>
-              <MenuItem fx:id="goodsImportFile" mnemonicParsing="false" onAction="#importFile" text="Завантажити дані про товари" />
                   <MenuItem fx:id="goodsEditFile" mnemonicParsing="false" text="Редагувати файл товарів" />
             </items>
                <graphic>
                   <StackPane prefHeight="150.0" prefWidth="0.0" />
                </graphic>
           </Menu>
-          <Menu fx:id="goodsClientInfoMenu" mnemonicParsing="false" text="Інформація">
+          <Menu fx:id="goodsImportFileMenu" mnemonicParsing="false" text="Інформація">
                <graphic>
                   <StackPane prefHeight="150.0" prefWidth="0.0" />
                </graphic>
                <items>
-                  <MenuItem fx:id="goodsClientInfo" mnemonicParsing="false" onAction="#importFile" text="Ввести" />
+                  <MenuItem fx:id="goodsImportFile" mnemonicParsing="false" onAction="#importFile" text="Завантажити дані про товари" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false">
@@ -60,7 +59,7 @@
                            <columns>
                               <TableColumn fx:id="goodsName" prefWidth="125.0" text="Назва товару" />
                               <TableColumn fx:id="goodsPrice" prefWidth="75.0" text="Ціна" />
-                              <TableColumn fx:id="goodsAmount" prefWidth="75.0" text="Кількість" />
+                              <TableColumn fx:id="goodsQuantity" prefWidth="75.0" text="Кількість" />
                               <TableColumn fx:id="goodsAvailable" prefWidth="50.0" text="Наявність" />
                            </columns></TableView>
                         <Button fx:id="saveFileButton" layoutX="10.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="580.0" text="Зберегти дані" />

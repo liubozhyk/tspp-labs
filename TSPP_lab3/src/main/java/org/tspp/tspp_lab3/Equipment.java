@@ -1,16 +1,37 @@
 package org.tspp.tspp_lab3;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.control.CheckBox;
+
 public class Equipment {
     private String name;
     private double price;
-    private int amount;
-    private boolean isAvailable;
+    private IntegerProperty quantity;
+    private boolean availability;
+    private CheckBox availableCheckBox;
 
-    public Equipment(String name, double price, int amount) {
+    public Equipment(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
-        this.amount = amount;
-        this.isAvailable = amount > 0;
+        this.quantity = new SimpleIntegerProperty(Math.max(0, quantity));
+    }
+
+    private boolean isAvailability() {
+        this.availability = quantity.get() > 0;
+        return availability;
+    }
+
+    public CheckBox getAvailableCheckBox() {
+        return availableCheckBox;
+    }
+
+    public void setAvailableCheckBox(CheckBox availableCheckBox) {
+        this.availableCheckBox = availableCheckBox;
+    }
+
+    public void isCheckBoxSelected() {
+        this.getAvailableCheckBox().setSelected(isAvailability());
     }
 
     public String getName() {
@@ -29,19 +50,11 @@ public class Equipment {
         this.price = price;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getQuantity() {
+        return quantity.get();
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public boolean setAvailable(boolean available) {
-        return amount > 0;
+    public void setQuantity(int quantity) {
+        this.quantity.set(Math.max(0, quantity));
     }
 }
