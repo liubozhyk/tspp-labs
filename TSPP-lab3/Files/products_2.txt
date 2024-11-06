@@ -1,0 +1,5 @@
+Videocard, 799.0, 12
+Mouse, 89.0, 9
+Keyboard, 109.0, 0
+Headphones, 159.0, 10
+Tablet, 599.0, 14
